@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default  (req: NextApiRequest, res: NextApiResponse) => {
   try {
     /**
      * Input your code implementation here!
@@ -15,7 +15,23 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
      * 3) If user profile json is not found, it should throw 404 error.
      * 4) If it's a invalid method route, throw 405 error.
      */
-    return;
+    if (req.method === 'GET'){
+      const path = process.cwd()+'/pages/data/'+req.url.substring(10)+'.json'
+      console.log(path)
+      try {
+        if (fs.existsSync(path)) {
+          console.log("file exist")
+          const data = fs.readFileSync(path).toString()
+          return res.status(200).json(data);
+        }
+        console.log("file  not exist")
+        return res.status(404).json({statusCode:404,message:"user not exist"});
+      } catch(err) {
+        console.error(err)
+      } 
+    } 
+    console.log("wrong method")
+    return res.status(404).json({ statusCode: 500, message: "only accept get" });
   } catch (error) {
     return res.status(500).json({ statusCode: 500, message: error.message });
   }

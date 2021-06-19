@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "clsx": "latest",
+    "fs": "^0.0.1-security",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
