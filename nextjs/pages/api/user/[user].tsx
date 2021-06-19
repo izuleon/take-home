@@ -20,18 +20,15 @@ export default  (req: NextApiRequest, res: NextApiResponse) => {
       console.log(path)
       try {
         if (fs.existsSync(path)) {
-          console.log("file exist")
           const data = fs.readFileSync(path).toString()
           return res.status(200).json(data);
         }
-        console.log("file  not exist")
         return res.status(404).json({statusCode:404,message:"user not exist"});
       } catch(err) {
         console.error(err)
       } 
     } 
-    console.log("wrong method")
-    return res.status(404).json({ statusCode: 500, message: "only accept get" });
+    return res.status(405).json({ statusCode: 405, message: "only accept get" });
   } catch (error) {
     return res.status(500).json({ statusCode: 500, message: error.message });
   }
