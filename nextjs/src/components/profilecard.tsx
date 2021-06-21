@@ -13,10 +13,18 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import AboutMe from "../../src/components/aboutme.tsx"
 
 interface ProfileCardProps {
   username: string;
+  profileImage: string;
+  mainImage: string;
+  about: JSON;
+  services:JSON;
+  accreditations: JSON;
+  testimonials: JSON;
 }
+
 
 export default class ProfileCard extends React.Component<ProfileCardProps, {}> {
   constructor(props: ProfileCardProps) {
@@ -29,9 +37,11 @@ export default class ProfileCard extends React.Component<ProfileCardProps, {}> {
         <CardContent>
           <Typography component="h1" variant="h2" gutterBottom>
             Hi! My name is {this.props.username}!
+            {this.props.profileImage}
           </Typography>
           <Typography variant="h5" component="h3" color="textSecondary">
-            Author | Freelancer | Coach
+            About me
+            <AboutMe about={this.props.about} />
           </Typography>
           <Typography style={{marginBottom : 12}} color="textSecondary">
             Available for Hire

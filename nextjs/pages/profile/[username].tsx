@@ -8,8 +8,8 @@ import { loadGetInitialProps, NextPageContext } from "next/dist/next-server/lib/
 
 interface ProfileWidgetProps {
   username : string;
-  id?:String;
-  profileimage?:String;
+  profileImage : string;
+  about : JSON;
 }
 
 class ProfileWidget extends React.Component<ProfileWidgetProps, {}> {
@@ -26,7 +26,15 @@ class ProfileWidget extends React.Component<ProfileWidgetProps, {}> {
         <Head>
           <title>{this.props.username}'s Profile</title>
         </Head>
-        <ProfileCard username={this.props.username} />
+        <ProfileCard 
+                username={this.props.username}
+                profileImage={this.props.profileImage}
+                // mainImage={data.mainImage as string}
+                about={this.props.about}
+                // services={data.services as JSON}
+                // accreditations={data.accreditations as JSON}
+                // testimonial={data.testimonial as JSON}
+                 />
       </>
     );
   }
@@ -44,8 +52,7 @@ const ProfilePage = ({data}): JSX.Element => {
   return (
     <>
       <ProfileWidget 
-        username={data.id as string}
-        id={data.id as string}
+        username={data.about.name as string}
         profileImage={data.profileImage as string}
         mainImage={data.mainImage as string}
         about={data.about as JSON}
