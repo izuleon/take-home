@@ -41,7 +41,6 @@ export default class ProfileCard extends React.Component<ProfileCardProps, {}> {
           </Typography>
           <Typography variant="h5" component="h3" color="textSecondary">
             About me
-            <AboutMe about={this.props.about} />
           </Typography>
           <Typography style={{marginBottom : 12}} color="textSecondary">
             Available for Hire

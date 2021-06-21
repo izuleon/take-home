@@ -4,12 +4,17 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import ErrorPage from 'next/error'
 import ProfileCard from "../../src/components/profilecard.tsx"
+import AboutMe from "../../src/components/aboutme.tsx"
 import { loadGetInitialProps, NextPageContext } from "next/dist/next-server/lib/utils";
 
 interface ProfileWidgetProps {
   username : string;
   profileImage : string;
+  mainImage: string;
   about : JSON;
+  services : JSON;
+  accreditations: JSON;
+  testimonial: JSON;
 }
 
 class ProfileWidget extends React.Component<ProfileWidgetProps, {}> {
@@ -29,11 +34,9 @@ class ProfileWidget extends React.Component<ProfileWidgetProps, {}> {
         <ProfileCard 
                 username={this.props.username}
                 profileImage={this.props.profileImage}
-                // mainImage={data.mainImage as string}
-                about={this.props.about}
-                // services={data.services as JSON}
-                // accreditations={data.accreditations as JSON}
-                // testimonial={data.testimonial as JSON}
+                 />
+        <AboutMe
+                user = {this.props.about}
                  />
       </>
     );

@@ -13,15 +13,13 @@
  import CardContent from '@material-ui/core/CardContent';
  import Button from '@material-ui/core/Button';
  import Typography from '@material-ui/core/Typography';
- import AboutMe from "../../src/components/aboutme.tsx"
  
  interface AboutMeProps {
-    name:string;
-    introduction:string;
+    user:JSON;
  }
  
  
- export default class ProfileCard extends React.Component<AboutMeProps, {}> {
+ export default class AboutMe extends React.Component<AboutMeProps, {}> {
    constructor(props: AboutMeProps) {
      super(props);
    }
@@ -29,7 +27,21 @@
    render(): JSX.Element {
      return (
         <Typography>
-            name: {this.props.name}
+            <Typography>
+              {this.props.user.introduction}
+            </Typography>
+            <Typography>
+              Years of Experience: {this.props.user.yearsOfExperience}
+            </Typography>
+            <Typography>
+              Company: {this.props.user.company}
+            </Typography>
+            <Typography>
+              Age: {this.props.user.age}
+            </Typography>
+            <Typography>
+              Spoken Language: {this.props.user.spokenLanguage}
+            </Typography>
         </Typography>
      );
    }
